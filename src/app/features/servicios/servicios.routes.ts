@@ -1,0 +1,2 @@
+import { Routes } from '@angular/router';import { permisoGuard } from '../../core/guards/permiso.guard';
+export const routes:Routes=[{path:'',loadComponent:()=>import('./servicio-list').then(m=>m.ServicioList)},{path:'nuevo',canActivate:[permisoGuard],data:{permiso:'SERVICIO_ESCRIBIR'},loadComponent:()=>import('./servicio-form').then(m=>m.ServicioForm)},{path:':id/editar',canActivate:[permisoGuard],data:{permiso:'SERVICIO_ESCRIBIR'},loadComponent:()=>import('./servicio-form').then(m=>m.ServicioForm)}];

@@ -1,0 +1,2 @@
+import { Component,input } from '@angular/core';import { AbstractControl } from '@angular/forms';
+@Component({selector:'app-error-campo',template:`@if(servidor()){<small class="error-campo">{{servidor()}}</small>}@else if(control()?.touched&&control()?.invalid){<small class="error-campo">{{mensaje()}}</small>}`})export class ErrorCampo {control=input<AbstractControl|null>(null);servidor=input<string>();mensaje=input('Revise el valor de este campo.');}

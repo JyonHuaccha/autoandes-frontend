@@ -1,0 +1,2 @@
+import { Injectable,inject } from '@angular/core'; import { HttpClient,HttpParams } from '@angular/common/http'; import { environment } from '../../../environments/environment'; import { Cliente,Servicio,ServicioRequest,Vehiculo,VehiculoRequest,Orden,OrdenRequest,Ingreso } from '../models/autoandes.model';
+@Injectable({providedIn:'root'}) export class ClienteService {private readonly http=inject(HttpClient);private readonly url=environment.apiUrl+'/clientes'; listar(){return this.http.get<Cliente[]>(this.url);} }
