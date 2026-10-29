@@ -1,0 +1,1 @@
+import { Component } from '@angular/core';import { RouterLink } from '@angular/router';@Component({imports:[RouterLink],template:`<section class="card empty"><h1>Acceso denegado</h1><p>Su usuario no tiene permiso para acceder a esta página. La sesión continúa activa.</p><a class="button" routerLink="/inicio">Volver al inicio</a></section>`})export class AccesoDenegado {}
