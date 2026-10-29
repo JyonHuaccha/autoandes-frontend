@@ -1,1 +1,9 @@
-import { Permiso } from '../auth/auth.model';export const MENU:{ruta:string;texto:string;permiso?:Permiso}[]=[{ruta:'/inicio',texto:'Inicio'},{ruta:'/servicios',texto:'Servicios',permiso:'SERVICIO_LEER'},{ruta:'/vehiculos',texto:'Vehículos',permiso:'VEHICULO_LEER'},{ruta:'/ordenes',texto:'Órdenes',permiso:'ORDEN_LEER'},{ruta:'/ordenes/nueva',texto:'Nueva orden',permiso:'ORDEN_REGISTRAR'},{ruta:'/reportes',texto:'Reportes',permiso:'REPORTE_VER'}];
+import { Permiso } from '../auth/auth.model';
+export const MENU: { ruta: string; texto: string; permiso?: Permiso }[] = [
+  { ruta: '/inicio', texto: 'Inicio' },
+  { ruta: '/servicios', texto: 'Servicios', permiso: 'SERVICIO_LEER' },
+  { ruta: '/vehiculos', texto: 'Vehículos', permiso: 'VEHICULO_LEER' },
+  { ruta: '/ordenes', texto: 'Órdenes', permiso: 'ORDEN_LEER' },
+  { ruta: '/ordenes/nueva', texto: 'Nueva orden', permiso: 'ORDEN_REGISTRAR' },
+  { ruta: '/reportes', texto: 'Reportes', permiso: 'REPORTE_VER' },
+];

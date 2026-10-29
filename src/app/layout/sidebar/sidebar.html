@@ -1,0 +1,14 @@
+<aside>
+  <p class="nav-label">GESTIÓN DEL TALLER</p>
+  <nav aria-label="Principal">
+    @for (item of items(); track item.ruta) {
+      <a
+        [routerLink]="item.ruta"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.ruta === '/ordenes' }"
+      >
+        {{ item.texto }}
+      </a>
+    }
+  </nav>
+</aside>

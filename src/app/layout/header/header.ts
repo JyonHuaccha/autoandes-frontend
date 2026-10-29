@@ -1,2 +1,12 @@
-import { Component,inject } from '@angular/core';import { RouterLink } from '@angular/router';import { AuthService } from '../../core/auth/auth.service';
-@Component({selector:'app-header',imports:[RouterLink],template:`<header><a class="brand" routerLink="/inicio">AutoAndes<span>Taller mecánico</span></a><div class="user"><span>{{auth.sesion()?.nombreCompleto}}<small>{{auth.sesion()?.roles?.join(' · ')}}</small></span><button class="header-button" (click)="auth.cerrarSesion()">Cerrar sesión</button></div></header>`})export class Header {readonly auth=inject(AuthService);}
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/auth/auth-service';
+@Component({
+  selector: 'app-header',
+  imports: [RouterLink],
+  styleUrl: './header.css',
+  templateUrl: './header.html',
+})
+export class Header {
+  readonly auth = inject(AuthService);
+}

@@ -1,2 +1,12 @@
-import { Component,inject } from '@angular/core';import { RouterLink } from '@angular/router';import { AuthService } from '../../core/auth/auth.service';import { SiPermiso } from '../../shared/directives/si-permiso';
-@Component({imports:[RouterLink,SiPermiso],template:`<p class="eyebrow">AutoAndes Web</p><h1>Bienvenido, {{auth.sesion()?.nombreCompleto}}</h1><p class="muted">Gestione los servicios, vehículos y órdenes del taller desde un solo lugar.</p><div class="dashboard"><a class="card dashboard-card" routerLink="/servicios" *appSiPermiso="'SERVICIO_LEER'"><h2>Servicios</h2><p>Consulte el catálogo del taller.</p></a><a class="card dashboard-card" routerLink="/vehiculos" *appSiPermiso="'VEHICULO_LEER'"><h2>Vehículos</h2><p>Encuentre vehículos y sus clientes.</p></a><a class="card dashboard-card" routerLink="/ordenes" *appSiPermiso="'ORDEN_LEER'"><h2>Órdenes</h2><p>Consulte las atenciones registradas.</p></a><a class="card dashboard-card" routerLink="/reportes" *appSiPermiso="'REPORTE_VER'"><h2>Ingresos</h2><p>Revise los ingresos por servicio.</p></a></div>`})export class Inicio {readonly auth=inject(AuthService);}
+import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../core/auth/auth-service';
+import { SiPermiso } from '../../shared/directives/si-permiso';
+@Component({
+  imports: [RouterLink, SiPermiso],
+  styleUrl: './inicio.css',
+  templateUrl: './inicio.html',
+})
+export class Inicio {
+  readonly auth = inject(AuthService);
+}

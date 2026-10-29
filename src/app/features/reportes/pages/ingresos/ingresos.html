@@ -1,0 +1,58 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">Reportes del taller</p>
+    <h1>Ingresos por servicio</h1>
+  </div>
+  <button class="secondary no-print" (click)="imprimir()">Imprimir</button>
+</div>
+<div class="card">
+  <form class="filters" (ngSubmit)="consultar()">
+    <label>
+      Desde
+      <input type="date" name="desde" [(ngModel)]="desde" />
+    </label>
+    <label>
+      Hasta
+      <input type="date" name="hasta" [(ngModel)]="hasta" />
+    </label>
+    <button type="submit" [disabled]="cargando()">Consultar</button>
+  </form>
+  <p class="muted">
+    Período: {{ desde || 'Sin límite inicial' }} — {{ hasta || 'Sin límite final' }}. Solo órdenes
+    REGISTRADAS.
+  </p>
+  @if (error()) {
+    <p class="alert error" role="alert">{{ error() }}</p>
+  }
+  @if (cargando()) {
+    <p role="status">Consultando ingresos…</p>
+  } @else {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Servicio</th>
+            <th>Cantidad total</th>
+            <th>Importe total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (x of items(); track x.codigo) {
+            <tr>
+              <td>{{ x.codigo }}</td>
+              <td>{{ x.servicio }}</td>
+              <td>{{ x.cantidadTotal }}</td>
+              <td>{{ x.importeTotal | currency: 'PEN' : 'S/ ' }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" class="empty">No hay ingresos para el período seleccionado.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="totals">Ingresos totales: {{ total() | currency: 'PEN' : 'S/ ' }}</div>
+  }
+</div>

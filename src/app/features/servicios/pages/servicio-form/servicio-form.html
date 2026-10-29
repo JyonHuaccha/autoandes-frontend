@@ -1,0 +1,59 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">Mantenimiento</p>
+    <h1>{{ id ? 'Editar' : 'Nuevo' }} servicio</h1>
+  </div>
+  <a class="button secondary" routerLink="/servicios">Volver</a>
+</div>
+@if (error()) {
+  <p class="alert error" role="alert">{{ error() }}</p>
+}
+@if (cargando()) {
+  <p role="status">Cargando registro…</p>
+}
+<form [formGroup]="form" (ngSubmit)="guardar()" class="card form-grid">
+  <fieldset [disabled]="cargando() || guardando()">
+    <label>
+      Código
+      <input type="text" formControlName="codigo" />
+      <app-error-campo
+        [control]="form.controls.codigo"
+        [servidor]="campos()['codigo']"
+        mensaje="SRV-000"
+      />
+    </label>
+    <label>
+      Nombre
+      <input type="text" formControlName="nombre" />
+      <app-error-campo
+        [control]="form.controls.nombre"
+        [servidor]="campos()['nombre']"
+        mensaje="De 3 a 80 caracteres"
+      />
+    </label>
+    <label>
+      Precio (S/)
+      <input type="number" formControlName="precio" step="0.01" min="0.01" />
+      <app-error-campo
+        [control]="form.controls.precio"
+        [servidor]="campos()['precio']"
+        mensaje="Mayor que cero, máximo 2 decimales"
+      />
+    </label>
+    <label>
+      Duración (minutos)
+      <input type="number" formControlName="duracionMin" />
+      <app-error-campo
+        [control]="form.controls.duracionMin"
+        [servidor]="campos()['duracionMin']"
+        mensaje="De 15 a 480 minutos"
+      />
+    </label>
+    <div class="form-actions">
+      <button type="submit" [disabled]="guardando() || cargando()">
+        {{ guardando() ? 'Guardando…' : 'Guardar' }}
+      </button>
+      <a class="button secondary" routerLink="/servicios">Cancelar</a>
+    </div>
+  </fieldset>
+</form>

@@ -1,5 +1,5 @@
 import { Directive, effect, inject, input, TemplateRef, ViewContainerRef } from '@angular/core';
-import { AuthService } from '../../core/auth/auth.service';
+import { AuthService } from '../../core/auth/auth-service';
 import { Permiso } from '../../core/auth/auth.model';
 
 @Directive({
